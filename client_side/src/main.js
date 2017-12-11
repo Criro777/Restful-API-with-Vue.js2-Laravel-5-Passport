@@ -2,6 +2,7 @@
 // (runtime-only or standalone) has been set in webpack.base.conf with an alias.
 import Vue from 'vue'
 import App from './App'
+import API from './API'
 import axios from 'axios'
 import router from './router'
 
@@ -9,6 +10,7 @@ axios.defaults.baseURL = 'http://127.0.0.1:8000/';
 axios.defaults.headers.common['Authorization'] = AUTH_TOKEN;
 
 window.axios = axios;
+window.API = API;
 
 
 Vue.config.productionTip = false
