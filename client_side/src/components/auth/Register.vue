@@ -68,7 +68,26 @@
       },
 
       register(user) {
+        axios.post(API.register, user)
+          .then(response => {
+            this.clear();
+            let successMessage = response.data.message;
+            this.$router.replace('/login');
+          })
+          .catch(error => {
 
+            let data = error.response.data.errors;
+
+            for (let key in this.errors) {
+              // reset all errors
+              this.errors[key] = [];
+
+              let errorMessage = data[key];
+
+              if (errorMessage)
+                this.errors[key] = errorMessage;
+            }
+          })
       }
     }
 
@@ -85,6 +104,7 @@
     width: 40%;
     color: #2c3e50;
     background-color: #f2f4f6;
+    box-shadow: 0 3px 1px rgba(0,0,0,0.2);
     margin-top: 60px;
     border: 1px solid #f2f4f6;
     border-radius: 8px;
