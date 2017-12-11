@@ -29,7 +29,7 @@
 </template>
 
 <script>
-
+  import AUTH from './AUTH';
   export default {
     data() {
       return {
@@ -44,7 +44,37 @@
     methods: {
 
       login() {
+        let data = {
+          client_id: API.client_id,
+          client_secret: API.client_secret,
+          grant_type: API.grant_type,
+          username: this.user.email,
+          password: this.user.password,
 
+
+        }
+        axios.post(API.login, data)
+          .then(response => {
+             console.log(response);
+            AUTH.setToken(response.data.access_token, response.data.expires_in + Date.now());
+            this.$router.replace('/companies');
+          })
+          .catch(error => {
+
+            this.errors = error.response.data.message;
+
+
+            //
+            // for (let key in this.errors) {
+            //   // reset all errors
+            //   this.errors[key] = [];
+            //
+            //   let errorMessage = data[key];
+            //
+            //   if (errorMessage)
+            //     this.errors[key] = errorMessage;
+            // }
+          })
       },
 
 
