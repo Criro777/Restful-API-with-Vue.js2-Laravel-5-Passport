@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Faker\Factory;
+use App\Company;
 
 class DatabaseSeeder extends Seeder
 {
@@ -11,6 +13,16 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // $this->call(UsersTableSeeder::class);
+        $faker = Factory::create();
+        foreach(range(1, 50) as $i) {
+            Company::create([
+                'name' => $faker->name,
+                'capital' => $faker->randomFloat(4,300000),
+                'president' =>$faker->firstName.' '.$faker->lastName,
+                'website' => $faker->domainName,
+                'created_at' => $faker->dateTime()
+
+            ]);
+        }
     }
 }
