@@ -4,6 +4,8 @@ import Index from '@/components/Index'
 import Register from '../components/auth/Register'
 import Login from '../components/auth/Login'
 import Companies from '../components/Companies'
+import CompanyCreate from '@/components/CompanyCreate'
+import CompanyEdit from '@/components/CompanyEdit'
 
 Vue.use(Router)
 
@@ -13,9 +15,6 @@ export default new Router({
       path: '/',
       name: 'Index',
       component: Index,
-      meta: {
-        forGuest: true
-      }
     },
 
     {
@@ -41,6 +40,23 @@ export default new Router({
       path: '/companies',
       name: 'Companies',
       component: Companies,
+      meta: {
+        forAuth: true
+      }
+    },
+
+    {
+      path: '/companies/create',
+      name: 'CompanyCreate',
+      component: CompanyCreate,
+      meta: {
+        forAuth: true
+      }
+    },
+    {
+      path: '/companies/edit/:id',
+      name: 'CompanyEdit',
+      component: CompanyEdit,
       meta: {
         forAuth: true
       }
