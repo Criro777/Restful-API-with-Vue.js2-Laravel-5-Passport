@@ -60,7 +60,7 @@ class CompaniesController extends Controller
      */
     public function show($id)
     {
-        //
+        return Company::findOrFail($id);
     }
 
     /**
