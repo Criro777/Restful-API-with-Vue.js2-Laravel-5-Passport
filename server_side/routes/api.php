@@ -15,6 +15,8 @@ use Illuminate\Http\Request;
 
 Route::post('/register', 'Auth\RegisterController@create');
 
+Route::resource('companies', 'CompaniesController');
+
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
