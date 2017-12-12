@@ -4,7 +4,7 @@
       <div class="col-md-8 col-md-offset-2">
         <div class="panel panel-default">
           <div class="panel-heading text-left">
-            The World’s Biggest Companies
+            <h3>The World’s Biggest Companies</h3>
           </div>
           <div class="panel-body table-responsive">
           </div>
@@ -16,9 +16,10 @@
           </div>
 
           <div class="panel panel-default">
-            <div class="panel-heading text-left">Companies list<a class="logout" @click ="logout()">Logout</a></div>
+            <div class="panel-heading text-left"><h4>Companies list<a class="logout" @click ="logout()">Logout</a></h4></div>
             <div class="panel-body">
               <button class="btn btn-info btn-sm" @click="showFilter = !showFilter">Filter by date</button>
+              <transition name="toggle">
               <div class="filter text-center" v-if="showFilter">
                 <form @submit="OnFilter()">
                   <div class="input-group date">
@@ -36,6 +37,7 @@
                   </div>
                 </form>
               </div>
+               </transition>
               <div v-if="!dataEmpty" class="data">
                 <table class="table table-bordered table-striped">
                   <thead>
@@ -200,5 +202,17 @@
   .logout {
     float:right;
     cursor:pointer;
+  }
+
+  .toggle-enter-active, .toggle-leave-active {
+    transition: all .3s ease;
+    height:100%;
+  }
+
+  .toggle-enter, .toggle-leave-to {
+    height: 0;
+    opacity: 0;
+
+    //transform: translateY(20px);
   }
 </style>

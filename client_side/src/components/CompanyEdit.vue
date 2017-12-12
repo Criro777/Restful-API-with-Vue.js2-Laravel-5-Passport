@@ -7,29 +7,29 @@
             <router-link :to="{name: 'Companies'}" class="btn btn-default">Back</router-link>
           </div>
           <div class="panel panel-default">
-            <div class="panel-heading">Create new company</div>
+            <div class="panel-heading"><h4>Edit company</h4></div>
             <div class="panel-body">
               <form @submit="saveForm()">
                 <div class="row">
-                  <div class="col-xs-12 form-group">
-                    <label class="control-label text-left">Company name</label>
+                  <div class="col-xs-12 form-group text-left">
+                    <label class="control-label">Company name</label>
                     <input type="text" v-model="company.name" class="form-control" required>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-12 form-group">
+                  <div class="col-xs-12 form-group text-left">
                     <label class="control-label text-left">Company capital</label>
                     <input type="number" v-model="company.capital" class="form-control" required>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-12 form-group">
+                  <div class="col-xs-12 form-group text-left">
                     <label class="control-label">Company president</label>
                     <input type="text" v-model="company.president" class="form-control" required>
                   </div>
                 </div>
                 <div class="row">
-                  <div class="col-xs-12 form-group">
+                  <div class="col-xs-12 form-group text-left">
                     <label class="control-label">Company website</label>
                     <input type="text" v-model="company.website" class="form-control" required>
                   </div>

@@ -5,20 +5,23 @@
       <img class="img-responsive" src="../assets/logo.png">
 
       <div class="form-group links">
-        <p>{{enter_text}}</p>
-
+        <p>{{AUTH.isAuthenticated() ? enter_text : login_text}}</p>
+        <router-link :to="{name : (AUTH.isAuthenticated()) ? 'Companies' : 'Login'}" class="btn btn-default">{{AUTH.isAuthenticated()? 'Companies' : 'Login'}}</router-link>
       </div>
     </div>
   </div>
 </template>
 
 <script>
+  import AUTH from "./auth/AUTH";
   export default {
 
     data() {
       return {
+        AUTH: AUTH,
         msg: 'Welcome to APIMicroService.',
-        enter_text: 'Please register or login to continue.'
+        login_text: 'Please register or login to continue.',
+        enter_text: ''
       }
     }
   }
